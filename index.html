@@ -1,101 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script
-      src="https://kit.fontawesome.com/bbc8c6c5c3.js"
-      crossorigin="anonymous"
-    ></script>
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
-      crossorigin="anonymous"
-    />
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <link rel="stylesheet" href="src/styles.css" />
-    <link rel="stylesheet" href="src/index.js" class="js" />
 
-    <title>Weather today</title>
-  </head>
-  <body>
-    <div class="container">
-      <div class="weather-box">
-        <div class="row weather-forecast">
-          <div class="col-sm first-forecast">
-            <h4>Mon</h4>
-            <p>11/6°C</p>
-            <i class="fas fa-cloud-sun forecast-icon"></i>
-          </div>
-          <div class="col-sm">
-            <h4>Tue</h4>
-            <p>12/5°C</p>
-            <i class="fas fa-cloud-sun-rain forecast-icon"></i>
-          </div>
-          <div class="col-sm">
-            <h4>Wed</h4>
-            <p>13/6°C</p>
-            <i class="fas fa-cloud-showers-heavy forecast-icon"></i>
-          </div>
-          <div class="col-sm">
-            <h4>Thu</h4>
-            <p>12/4°C</p>
-            <i class="fas fa-sun forecast-icon"></i>
-          </div>
-          <div class="col-sm">
-            <h4>Fri</h4>
-            <p>11/5°C</p>
-            <i class="fas fa-cloud-showers-heavy forecast-icon"></i>
-          </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://kit.fontawesome.com/bbc8c6c5c3.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <link rel="stylesheet" href="src/styles.css" />
+  <link rel="stylesheet" href="src/index.js" class="js" />
+
+  <title>Weather today</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="weather-box">
+      <div class="row weather-forecast">
+        <div class="col-sm first-forecast">
+          <h4>Mon</h4>
+          <p>11/6°C</p>
+          <i class="fas fa-cloud-sun forecast-icon"></i>
         </div>
-        <div class="row main-content">
-          <div class="col-4">
-            <h1 id="current-city">Manchester</h1>
-            <h4 id="date"></h4>
-            <h2>
-              <strong id="temperature">10</strong>°C
-              <!--<a href="#" id="celsius">°C</a> |
+        <div class="col-sm">
+          <h4>Tue</h4>
+          <p>12/5°C</p>
+          <i class="fas fa-cloud-sun-rain forecast-icon"></i>
+        </div>
+        <div class="col-sm">
+          <h4>Wed</h4>
+          <p>13/6°C</p>
+          <i class="fas fa-cloud-showers-heavy forecast-icon"></i>
+        </div>
+        <div class="col-sm">
+          <h4>Thu</h4>
+          <p>12/4°C</p>
+          <i class="fas fa-sun forecast-icon"></i>
+        </div>
+        <div class="col-sm">
+          <h4>Fri</h4>
+          <p>11/5°C</p>
+          <i class="fas fa-cloud-showers-heavy forecast-icon"></i>
+        </div>
+      </div>
+      <div class="row main-content">
+        <div class="col-4">
+          <h1 id="current-city">Manchester</h1>
+          <h4 id="date"></h4>
+          <h2>
+            <strong id="temperature">10</strong>°C
+            <!--<a href="#" id="celsius">°C</a> |
               <a href="#" id="fahrenheit">°F</a>-->
-            </h2>
-            <h3>Humidity: <span id="humidity">85</span>%</h3>
-            <h3>
-              <i class="fas fa-wind"></i> Wind: <span id="wind">7</span>mph
-            </h3>
-          </div>
-          <div class="col-3"><i class="fas fa-cloud-sun main-icon"></i></div>
-          <div class="col-5">
-            <div class="input-group mb-5 main-search">
-              <form class="search-form" id="search-form">
-                <input
-                  id="city-input"
-                  type="text"
-                  class="form-control btn"
-                  placeholder="Vienna, London etc..."
-                  aria-label="Other cities"
-                  aria-describedby="button-addon2"
-                  autocomplete="off"
-                />
+          </h2>
+          <h3>Humidity: <span id="humidity">85</span>%</h3>
+          <h3>
+            <i class="fas fa-wind"></i> Wind: <span id="wind">7</span>mph
+          </h3>
+        </div>
+        <div class="col-3"><i class="fas fa-cloud-sun main-icon"></i></div>
+        <div class="col-5">
+          <div class="input-group mb-5 main-search">
+            <form class="search-form" id="search-form">
+              <input id="city-input" type="text" class="form-control btn" placeholder="Vienna, London etc..."
+                aria-label="Other cities" aria-describedby="button-addon2" autocomplete="off" />
 
-                <button
-                  class="btn btn-info info-search"
-                  type="submit"
-                  id="search-location"
-                >
-                  Search
-                </button>
-                <button
-                  class="btn btn-info info-current"
-                  type="button"
-                  id="current-location"
-                >
-                  Current
-                </button>
-              </form>
-            </div>
+              <button class="btn btn-info info-search" type="submit" id="search-location">
+                Search
+              </button>
+              <button class="btn btn-info info-current" type="button" id="current-location">
+                Current
+              </button>
+            </form>
           </div>
         </div>
       </div>
     </div>
-  </body>
+  </div>
+</body>
+
 </html>
