@@ -44,12 +44,12 @@ function displayWeatherCondition(response) {
   );
 }
 
-function searchCity(city) {
+function searchCity(event) {
+  event.preventDefault();
   let apiKey = "2ceada01b7fc7d0d21b702ddd8150d97";
   let cityElement = document.querySelector("#current-city");
   let cityInput = document.querySelector("#city-input");
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-  event.preventDefault();
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput.value}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayWeatherCondition);
   cityElement.innerHTML = cityInput.value;
 }
