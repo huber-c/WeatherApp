@@ -78,6 +78,10 @@ button {
   border-color: #327090;
 }
 
+.footer {
+  margin-left: 20px;
+}
+
 @media screen and (max-width: 767px) {
   h1 {
     font-size: 30px;
